@@ -38,7 +38,7 @@ export default function PlayProvider({ children }) {
     }, idleTimeThreshold);
   }
   return (
-    <PlayContext.Provider value={{ muted,setMuted,volume,setVolume,url,setUrl,playing,setPlaying,space
+    <PlayContext.Provider suppressHydrationWarning  value={{ muted,setMuted,volume,setVolume,url,setUrl,playing,setPlaying,space
   ,setSpace,afk }}>{children}</PlayContext.Provider>
   );
 }

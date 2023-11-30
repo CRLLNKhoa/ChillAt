@@ -16,7 +16,6 @@ export default function Page() {
   return (
     <div className="video-player">
       <LoadingComponent />
-      <Suspense>
         {!playing && isClient && (
           <span
             onClick={() => setPlaying(true)}
@@ -31,7 +30,6 @@ export default function Page() {
             <p className="font-mono">Nhấn để phát</p>
           </span>
         )}
-      </Suspense>
       <div className="space-view">
         <div className="w-screen h-screen relative">
           <div className="w-full h-full">

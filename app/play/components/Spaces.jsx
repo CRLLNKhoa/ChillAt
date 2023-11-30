@@ -35,13 +35,15 @@ export default function Spaces() {
         Nhấp vào biểu tượng cảm xúc nhiều lần để biết thêm nội dung
       </p>
     </div>
-    <div className="flex flex-wrap gap-2 justify-around py-4 items-start">
-      {listSpace?.map((item) => (
-        <ItemSpace
-          key={item.name}
-          dataItem={item}
-        />
-      ))}
+    <div className="overflow-y-auto">
+     <div className="flex flex-wrap gap-2 justify-around py-4 items-start">
+        {listSpace?.map((item) => (
+          <ItemSpace
+            key={item.name}
+            dataItem={item}
+          />
+        ))}
+     </div>
     </div>
     <InfoSpace />
   </div>
