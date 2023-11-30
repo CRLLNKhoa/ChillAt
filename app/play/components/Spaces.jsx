@@ -16,9 +16,9 @@ import { PlayContext } from "../providers/PlayProvider";
 import { cn } from "@/lib/utils";
 
 export default function Spaces() {
-  const {setSpace,space} = useContext(PlayContext)
+  const {setSpace,space,afk} = useContext(PlayContext)
   return (
-    <div className={cn("flex flex-col bg-white w-[300px] fixed top-[50px] -left-[400px] transition-all shadow-lg bottom-[10px] px-2 py-4 rounded-sm", space && "left-[80px]")}>
+    <div className={cn("flex flex-col bg-white w-[300px] fixed top-[50px] -left-[400px] transition-all shadow-lg bottom-[10px] px-2 py-4 rounded-sm", space && !afk && "left-[80px]")}>
       <span onClick={()=>setSpace(false)} className="flex cursor-pointer items-center justify-center w-[30px] h-[40px] absolute top-8 -right-[30px] bg-slate-200 rounded-se-sm rounded-ee-sm">
         <FaCaretLeft className="w-6 h-6 text-black" />
       </span>
@@ -81,7 +81,7 @@ const ItemSpace = ({ dataItem }) => {
   }
 
   return (
-    <div className="border-2 cursor-pointer relative group w-[55px] h-[55px] rounded-md flex justify-center items-center">
+    <div className="border-2 select-none cursor-pointer relative group w-[55px] h-[55px] rounded-md flex justify-center items-center">
       <img
         width={30}
         height={30}

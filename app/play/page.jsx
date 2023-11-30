@@ -10,26 +10,26 @@ export default function Page() {
 
   useEffect(() => {
     setIsClient(true);
-    setPlaying(false)
+    setPlaying(false);
   }, []);
 
   return (
     <div className="video-player">
       <LoadingComponent />
-        {!playing && isClient && (
-          <span
-            onClick={() => setPlaying(true)}
-            className="fixed w-32 h-32 top-1/2 left-1/2 
+      {!playing && isClient && (
+        <span
+          onClick={() => setPlaying(true)}
+          className="fixed w-32 h-32 top-1/2 left-1/2 
           -translate-x-1/2 -translate-y-1/2 bg-white z-10
           rounded-lg flex flex-col justify-center items-center select-none cursor-pointer"
-          >
-            <img
-              src="/start.svg"
-              alt="srta"
-            />
-            <p className="font-mono">Nhấn để phát</p>
-          </span>
-        )}
+        >
+          <img
+            src="/start.svg"
+            alt="srta"
+          />
+          <p className="font-mono">Nhấn để phát</p>
+        </span>
+      )}
       <div className="space-view">
         <div className="w-screen h-screen relative">
           <div className="w-full h-full">

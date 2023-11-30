@@ -14,11 +14,26 @@ import Breathe from "@/app/play/components/Breathe";
 import Spaces from "@/app/play/components/Spaces";
 import { PlayContext } from "@/app/play/providers/PlayProvider";
 import { cn } from "@/lib/utils";
+import TimerComponent from "@/app/play/components/TimerComponent";
+import TaskComponent from "@/app/play/components/StaskComponent";
 
 function LeftNav() {
-  const {space,setSpace,afk} = useContext(PlayContext)
+  const {
+    space,
+    setSpace,
+    afk,
+    showTimer,
+    setShowTimer,
+    showTask,
+    setShowTask,
+  } = useContext(PlayContext);
   return (
-    <div className={cn("z-50 fixed top-[40px] transition-all left-0 bottom-0 w-[70px] gap-2 bg-white flex flex-col justify-between items-center py-2 px-1",afk && "-left-[100px]")}>
+    <div
+      className={cn(
+        "z-50 fixed top-[40px] transition-all left-0 bottom-0 w-[70px] gap-2 bg-white flex flex-col justify-between items-center py-2 px-1",
+        afk && "-left-[100px]"
+      )}
+    >
       {/* NOTE PLAN BUTTON */}
       <div
         className=" flex flex-col items-center justify-center gap-2 
@@ -34,17 +49,29 @@ function LeftNav() {
           <IoMdHeadset />
         </div>
         {/* TODO ITEM */}
-        <div onClick={() => setSpace(!space)} className="flex flex-col justify-center text-orange-500 items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm">
+        <div
+          onClick={() => setSpace(!space)}
+          className={cn(
+            "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
+            space && "text-sky-500 bg-slate-200"
+          )}
+        >
           <IoImageOutline className="w-4 h-4" />
           <span className="text-[9px] font-semibold">Spaces</span>
         </div>
         {/* TODO ITEM */}
-        <div className="flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm">
+        <div
+          onClick={() => setShowTimer(!showTimer)}
+          className={cn(
+            "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
+            showTimer && "text-sky-500 bg-slate-200"
+          )}
+        >
           <RiTimerLine className="w-4 h-4" />
           <span className="text-[9px] font-semibold">Timer</span>
         </div>
         {/* TODO ITEM */}
-        <div className="flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm">
+        <div onClick={() => setShowTask(!showTask)} className={cn("flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm", showTask && "text-sky-500 bg-slate-200")}>
           <BiTask className="w-4 h-4" />
           <span className="text-[9px] font-semibold">Tasks</span>
         </div>
@@ -91,6 +118,8 @@ function LeftNav() {
         </Button>
       </div>
       <Spaces />
+      {showTimer && <TimerComponent />}
+      {showTask && <TaskComponent />}
     </div>
   );
 }
