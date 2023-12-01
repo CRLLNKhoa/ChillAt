@@ -16,6 +16,9 @@ import { PlayContext } from "@/app/play/providers/PlayProvider";
 import { cn } from "@/lib/utils";
 import TimerComponent from "@/app/play/components/TimerComponent";
 import TaskComponent from "@/app/play/components/StaskComponent";
+import { CalendarDemo } from "@/app/play/components/CalendarComponent";
+import ChatBotComponent from "@/app/play/components/chatbot/ChatBotComponent";
+import { BsRobot } from "react-icons/bs";
 
 function LeftNav() {
   const {
@@ -26,6 +29,10 @@ function LeftNav() {
     setShowTimer,
     showTask,
     setShowTask,
+    showCalendar,
+    setShowCalendar,
+    showChatBot,
+    setShowChatBot,
   } = useContext(PlayContext);
   return (
     <div
@@ -70,13 +77,36 @@ function LeftNav() {
           <RiTimerLine className="w-4 h-4" />
           <span className="text-[9px] font-semibold">Timer</span>
         </div>
+
+        <div
+          onClick={() => setShowChatBot(!showChatBot)}
+          className={cn(
+            "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
+            showChatBot && "text-sky-500 bg-slate-200"
+          )}
+        >
+          <BsRobot className="w-4 h-4" />
+          <span className="text-[9px] font-semibold">ChatBot</span>
+        </div>
         {/* TODO ITEM */}
-        <div onClick={() => setShowTask(!showTask)} className={cn("flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm", showTask && "text-sky-500 bg-slate-200")}>
+        <div
+          onClick={() => setShowTask(!showTask)}
+          className={cn(
+            "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
+            showTask && "text-sky-500 bg-slate-200"
+          )}
+        >
           <BiTask className="w-4 h-4" />
           <span className="text-[9px] font-semibold">Tasks</span>
         </div>
         {/* TODO ITEM */}
-        <div className="flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm">
+        <div
+          onClick={() => setShowCalendar(!showCalendar)}
+          className={cn(
+            "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
+            showCalendar && "text-sky-500 bg-slate-200"
+          )}
+        >
           <IoCalendarOutline className="w-4 h-4" />
           <span className="text-[9px] font-semibold">Calender</span>
         </div>
@@ -120,6 +150,8 @@ function LeftNav() {
       <Spaces />
       {showTimer && <TimerComponent />}
       {showTask && <TaskComponent />}
+      {showCalendar && <CalendarDemo />}
+      {showChatBot && <ChatBotComponent />}
     </div>
   );
 }

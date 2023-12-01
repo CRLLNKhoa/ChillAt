@@ -17,6 +17,8 @@ export default function PlayProvider({ children }) {
   const [afk, setAfk] = useState(false);
   const [showTimer, setShowTimer] = useState(false);
   const [showTask, setShowTask] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [showChatBot, setShowChatBot] = useState(false);
   let mouseIdleTimer;
   const idleTimeThreshold = 30000;
 
@@ -61,6 +63,10 @@ export default function PlayProvider({ children }) {
         afk,
         showTask,
         setShowTask,
+        showCalendar,
+        setShowCalendar,
+        showChatBot,
+        setShowChatBot,
       }}
     >
       {children}

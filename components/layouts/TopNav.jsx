@@ -14,6 +14,7 @@ import { PlayContext } from "@/app/play/providers/PlayProvider";
 import screenfull from "screenfull";
 import { cn } from "@/lib/utils";
 import { FacebookShareButton, FacebookIcon } from "next-share";
+import Loginform from "./Loginform";
 
 export default function TopNav() {
   const { muted, setMuted, setVolume, afk } = useContext(PlayContext);
@@ -51,6 +52,7 @@ export default function TopNav() {
         >
           🚀 Sign Up
         </Button>
+        <Loginform/>
       </div>
       <div className="flex gap-2">
         {!muted ? (
