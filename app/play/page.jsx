@@ -13,6 +13,8 @@ export default function Page() {
     setPlaying(false);
   }, []);
 
+  console.log(playing);
+
   return (
     <div className="video-player">
       <LoadingComponent />
@@ -30,7 +32,7 @@ export default function Page() {
           <p className="font-mono">Nhấn để phát</p>
         </span>
       )}
-      <div className="space-view">
+      <div className="space-view select-none">
         <div className="w-screen h-screen relative">
           <div className="w-full h-full">
             {isClient && (
@@ -46,7 +48,7 @@ export default function Page() {
                   youtube: {
                     playerVars: {
                       showinfo: 0,
-                      autoplay: 1,
+                      autoplay: 0,
                       origin:
                         process.env.NEXT_PUBLIC_PROXY ||
                         "http://localhost:3000",

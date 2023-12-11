@@ -1,9 +1,9 @@
-import { Inter } from "next/font/google";
+import { Playpen_Sans } from "next/font/google";
 import "./globals.css";
 import SessionProvider from "@/components/session-provider";
 import { Toaster } from "@/components/ui/toaster";
 
-const inter = Inter({ subsets: ["latin"] });
+const playpen = Playpen_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning={true}
       lang="en"
     >
-      <body className={inter.className}>{children}
+      <body className={playpen.className}>{children}
       <SessionProvider />
       <Toaster />
       </body>

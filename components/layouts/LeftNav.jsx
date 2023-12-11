@@ -19,6 +19,7 @@ import TaskComponent from "@/app/play/components/StaskComponent";
 import { CalendarDemo } from "@/app/play/components/CalendarComponent";
 import ChatBotComponent from "@/app/play/components/chatbot/ChatBotComponent";
 import { BsRobot } from "react-icons/bs";
+import ExploreComponent from "@/app/play/components/Explore/ExploreComponent";
 
 function LeftNav() {
   const {
@@ -33,11 +34,12 @@ function LeftNav() {
     setShowCalendar,
     showChatBot,
     setShowChatBot,
+    setShowEx
   } = useContext(PlayContext);
   return (
     <div
       className={cn(
-        "z-50 fixed top-[40px] transition-all left-0 bottom-0 w-[70px] gap-2 bg-white flex flex-col justify-between items-center py-2 px-1",
+        "z-40 fixed top-[40px] transition-all left-0 bottom-0 w-[70px] gap-2 bg-white flex flex-col justify-between items-center py-2 px-1",
         afk && "-left-[100px]"
       )}
     >
@@ -125,7 +127,7 @@ function LeftNav() {
       </div>
       {/* NOTE EXPLORE */}
       <div className="flex flex-col items-center">
-        <div
+        <div onClick={() => setShowEx(true)}
           className=" flex flex-col items-center justify-center gap-2 
       font-semibold text-muted-foreground cursor-pointer w-[55px] hover:bg-slate-100 rounded-xl duration-300 py-4"
         >

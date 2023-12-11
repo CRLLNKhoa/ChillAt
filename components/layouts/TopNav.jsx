@@ -26,16 +26,20 @@ import { useUser } from "@/lib/store/user";
 import { BiLogOutCircle } from "react-icons/bi";
 import { createBrowserClient } from "@supabase/ssr";
 import { updatedUser } from "@/actions/account";
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/components/ui/use-toast";
+import FavoriteComponent from "@/app/play/components/FavoriteComponent";
 
 export default function TopNav() {
-  const { muted, setMuted, setVolume, afk } = useContext(PlayContext);
+  const { muted, setMuted, setVolume, afk, showMyFavorite, setShowMyFavorite } =
+    useContext(PlayContext);
   const [isFull, setIsFull] = useState(false);
   const user = useUser((state) => state.user);
   const updated = useUser((state) => state.updated);
   const setUser = useUser((state) => state.setUser);
-  const setUpdated = useUser((state) => state.setUpdated)
-  const { toast } = useToast()
+  const setTasks = useUser((state) => state.setTasks);
+  const setFavorite = useUser((state) => state.setFavorite);
+  const setUpdated = useUser((state) => state.setUpdated);
+  const { toast } = useToast();
 
   const handleClickFullscreen = () => {
     screenfull.request();
@@ -52,28 +56,32 @@ export default function TopNav() {
   );
 
   const handleLogout = async () => {
-    await supabase.auth.signOut()
-    setUser(undefined)
+    await supabase.auth.signOut();
+    setUser(undefined);
+    setFavorite([]);
+    setTasks([])
   };
 
   const handleConfirm = async () => {
-     const result =  await updatedUser(user?.id)
-     if(result?.status){
-      setUpdated(true)
+    const result = await updatedUser(user?.id);
+    if (result?.status) {
+      setUpdated(true);
       toast({
         title: "Xác nhận thành công!",
         description: "Tài khoản của bạn đã được kích hoạt!",
-      })
-     }else  toast({
-      title: "Lỗi!",
-      description: "Tài khoản của bạn chưa được kích hoạt!",
-    })
-  }
+      });
+      location.reload()
+    } else
+      toast({
+        title: "Lỗi!",
+        description: "Tài khoản của bạn chưa được kích hoạt!",
+      });
+  };
 
   return (
     <nav
       className={cn(
-        "w-full h-[40px] fixed z-50 transition-all bg-white flex items-center py-1 justify-between",
+        "w-full h-[40px] fixed z-[1000] transition-all border-b bg-white flex items-center py-1 justify-between",
         afk && "-top-[60px]"
       )}
     >
@@ -88,9 +96,38 @@ export default function TopNav() {
           </Button>
         </div>
         {!user && <Loginform />}
-        {user && <p className="text-sm font-mono select-none">🌟 Chào mừng bạn! {user?.user_metadata?.full_name} 🎉</p>}
-        {updated === false && <span onClick={handleConfirm} className="text-sm text-red-500 cursor-pointer font-mono select-none">Xác nhận tài khoản tại đây!</span>}
+        {user && (
+          <p className="text-sm font-mono select-none">
+            🌟 Chào mừng bạn! {user?.user_metadata?.full_name} 🎉
+          </p>
+        )}
+        {updated === false && (
+            <div className="fixed top-0 bottom-0 left-0 right-0 z-[9999]">
+            <div className="absolute w-full h-full bg-black opacity-20 blur-lg"></div>
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px]
+             h-[300px] flex justify-center items-center flex-col bg-white rounded-sm p-4 gap-2 z-10"
+            >
+              <img
+                src="/gift.png"
+                alt="logo"
+                className="w-[200px]"
+              />
+              <h1 className="font-bold">Lần đầu tiên bạn đăng nhập!</h1>
+              <p className="text-center text-sm">
+                Nhấn vào đây để kích hoạt tài khoản!
+              </p>
+              <span onClick={handleConfirm}
+                className="bg-gradient-to-r from-red-500 to-rose-400 py-2 px-4 rounded-full cursor-pointer 
+              text-sm font-bold text-white"
+              >
+                Nhận Ngay
+              </span>
+            </div>
+          </div>
+        )}
       </div>
+   
       <div className="flex gap-2">
         {!muted ? (
           <Button
@@ -181,11 +218,17 @@ export default function TopNav() {
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
-              <DropdownMenuItem className="cursor-pointer flex justify-center items-center gap-2">
-              <MdFavoriteBorder />
+              <DropdownMenuItem
+                onClick={() => setShowMyFavorite(true)}
+                className="cursor-pointer flex justify-center items-center gap-2"
+              >
+                <MdFavoriteBorder />
                 My Favorite
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={handleLogout} className="cursor-pointer flex justify-center items-center gap-2">
+              <DropdownMenuItem
+                onClick={handleLogout}
+                className="cursor-pointer flex justify-center items-center gap-2"
+              >
                 <BiLogOutCircle />
                 <p className="text-end">Log out</p>
               </DropdownMenuItem>
@@ -193,6 +236,7 @@ export default function TopNav() {
           </DropdownMenu>
         )}
       </div>
+      {showMyFavorite && <FavoriteComponent />}
     </nav>
   );
 }
