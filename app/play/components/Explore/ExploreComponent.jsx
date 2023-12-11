@@ -1,13 +1,18 @@
-import React, { useContext } from "react";
+"use client"
+import React, { useContext, useState } from "react";
 import { GrPlan } from "react-icons/gr";
 import { PlayContext } from "../../providers/PlayProvider";
 import { IoMdHeadset } from "react-icons/io";
 import { TfiWorld } from "react-icons/tfi";
 import { Button } from "@/components/ui/button";
 import { FiSidebar } from "react-icons/fi";
+import SpaceExlore from "./SpaceExlore";
+import RankingsComponent from "./RankingsComponent";
+import { cn } from "@/lib/utils";
 
 export default function ExploreComponent() {
   const { showEx, setShowEx } = useContext(PlayContext);
+  const [tab, setTab] = useState(1);
 
   if (!showEx) {
     return null;
@@ -57,7 +62,16 @@ export default function ExploreComponent() {
             <TfiWorld />
           </div>
         </div>
-        <div className="absolute top-[40px] left-[70px] w-full right-0 bg-red-500 bottom-0 border-r flex flex-col items-center justify-start py-4">
+        <div className="absolute top-[40px] left-[70px] right-0
+         bottom-0 border-r grid grid-cols-8 py-4">
+            <div className="border-r p-4 pt-12 hidden lg:flex flex-col gap-2 text-[14px] justify-start items-start">
+              <h1 onClick={() => setTab(1)} className={cn("hover:text-sky-500 cursor-pointer duration-500",tab === 1 && "text-sky-500 font-semibold")}>🏞️ Spaces</h1>
+              <h1 onClick={() => setTab(2)} className={cn("hover:text-sky-500 cursor-pointer duration-500",tab === 2 && "text-sky-500 font-semibold")}>📑 Rankings</h1>
+            </div>
+            <div className="col-span-8 lg:col-span-7 p-4 overflow-y-auto">
+              {tab === 1 && <SpaceExlore />}
+              {tab === 2 && <RankingsComponent />}
+            </div>
         </div>
       </div>
     );

@@ -80,7 +80,7 @@ function LeftNav() {
           <span className="text-[9px] font-semibold">Timer</span>
         </div>
 
-        <div
+        {/* <div
           onClick={() => setShowChatBot(!showChatBot)}
           className={cn(
             "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
@@ -89,7 +89,7 @@ function LeftNav() {
         >
           <BsRobot className="w-4 h-4" />
           <span className="text-[9px] font-semibold">ChatBot</span>
-        </div>
+        </div> */}
         {/* TODO ITEM */}
         <div
           onClick={() => setShowTask(!showTask)}
@@ -113,15 +113,15 @@ function LeftNav() {
           <span className="text-[9px] font-semibold">Calender</span>
         </div>
         {/* TODO ITEM */}
-        <div className="flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm">
+        {/* <div className="flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm">
           <FaRegStickyNote className="w-4 h-4" />
           <span className="text-[9px] font-semibold">Notes</span>
-        </div>
+        </div> */}
         {/* TODO ITEM */}
-        <div className="flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm">
+        {/* <div className="flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm">
           <FaRegCirclePlay className="w-4 h-4" />
           <span className="text-[9px] font-semibold">Media</span>
-        </div>
+        </div> */}
         {/* TODO ITEM */}
         <Breathe />
       </div>

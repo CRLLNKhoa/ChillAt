@@ -1,19 +1,33 @@
 "use client";
-import { Suspense, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LoadingComponent from "./components/LoadingComponent";
 import { PlayContext } from "./providers/PlayProvider";
 import ReactPlayer from "react-player/lazy";
+import { useUser } from "@/lib/store/user";
+import { updateTime } from "@/actions/account";
 
 export default function Page() {
   const { muted, volume, url, playing, setPlaying } = useContext(PlayContext);
   const [isClient, setIsClient] = useState(false);
+  const user = useUser((state) => state.user);
 
   useEffect(() => {
     setIsClient(true);
     setPlaying(false);
   }, []);
 
-  console.log(playing);
+  const addTime = async (id) => {
+    const res = await updateTime(id)
+  };
+
+  useEffect(() => {
+    if (user?.id) {
+      const intervalId = setInterval(() => {
+        addTime(user?.id)
+      }, 300000);
+      return () => clearInterval(intervalId);
+    }
+  }, [user]);
 
   return (
     <div className="video-player">

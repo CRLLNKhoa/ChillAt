@@ -6,6 +6,8 @@ import { GrPowerReset } from "react-icons/gr";
 import { padNumberWithZero } from "@/lib/padNumber";
 import { cn } from "@/lib/utils";
 import { PlayContext } from "../providers/PlayProvider";
+import { updateCoins } from "@/actions/account";
+import { useUser } from "@/lib/store/user";
 const soundFile = "@/public/ting.mp3";
 
 export default function TimerComponent() {
@@ -13,6 +15,7 @@ export default function TimerComponent() {
   const [isStart, setIsStart] = useState(false);
   const [type, setType] = useState(0);
   const time = [1500000, 900000, 300000];
+  const user = useUser((state) => state.user);
 
   // Random component
   const Completionist = () => (
@@ -21,9 +24,17 @@ export default function TimerComponent() {
     </span>
   );
 
+  const addCoin = async (id, num) => {
+    const res = await updateCoins(id, num);
+  };
+
   // Renderer callback with condition
   const renderer = ({ minutes, seconds, completed }) => {
     if (completed) {
+      if (user) {
+        addCoin(user?.id, time[type] / 60000);
+      }
+      setIsStart(false)
       return <Completionist />;
     } else {
       // Render a countdown

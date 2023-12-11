@@ -29,6 +29,7 @@ export default function PlayProvider({ children }) {
       listShare[spaces] ||
         listShare[Math.floor(Math.random() * (172 - 100 + 1)) + 100]
     );
+    setPlaying(false)
     window.addEventListener("mousemove", handleMouseMove);
   }, []);
 

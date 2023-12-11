@@ -27,7 +27,7 @@ export default function Breathe() {
             alt="Breathe"
           />
         </div>
-        <AlertDialogCancel className="absolute text-lg right-6 top-6">
+        <AlertDialogCancel className="absolute text-lg right-6 top-12 ">
           <IoCloseSharp />
         </AlertDialogCancel>
       </AlertDialogContent>

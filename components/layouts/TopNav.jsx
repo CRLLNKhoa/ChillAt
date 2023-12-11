@@ -63,7 +63,8 @@ export default function TopNav() {
   };
 
   const handleConfirm = async () => {
-    const result = await updatedUser(user?.id);
+    const result = await updatedUser(user?.id,user?.user_metadata?.full_name, user?.user_metadata?.avatar_url
+      );
     if (result?.status) {
       setUpdated(true);
       toast({
