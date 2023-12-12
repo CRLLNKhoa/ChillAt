@@ -29,6 +29,7 @@ import { updatedUser } from "@/actions/account";
 import { useToast } from "@/components/ui/use-toast";
 import FavoriteComponent from "@/app/play/components/FavoriteComponent";
 
+
 export default function TopNav() {
   const { muted, setMuted, setVolume, afk, showMyFavorite, setShowMyFavorite } =
     useContext(PlayContext);
@@ -59,19 +60,22 @@ export default function TopNav() {
     await supabase.auth.signOut();
     setUser(undefined);
     setFavorite([]);
-    setTasks([])
+    setTasks([]);
   };
 
   const handleConfirm = async () => {
-    const result = await updatedUser(user?.id,user?.user_metadata?.full_name, user?.user_metadata?.avatar_url
-      );
+    const result = await updatedUser(
+      user?.id,
+      user?.user_metadata?.full_name,
+      user?.user_metadata?.avatar_url
+    );
     if (result?.status) {
       setUpdated(true);
       toast({
         title: "Xác nhận thành công!",
         description: "Tài khoản của bạn đã được kích hoạt!",
       });
-      location.reload()
+      location.reload();
     } else
       toast({
         title: "Lỗi!",
@@ -103,7 +107,7 @@ export default function TopNav() {
           </p>
         )}
         {updated === false && (
-            <div className="fixed top-0 bottom-0 left-0 right-0 z-[9999]">
+          <div className="fixed top-0 bottom-0 left-0 right-0 z-[9999]">
             <div className="absolute w-full h-full bg-black opacity-20 blur-lg"></div>
             <div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px]
@@ -118,7 +122,8 @@ export default function TopNav() {
               <p className="text-center text-sm">
                 Nhấn vào đây để kích hoạt tài khoản!
               </p>
-              <span onClick={handleConfirm}
+              <span
+                onClick={handleConfirm}
                 className="bg-gradient-to-r from-red-500 to-rose-400 py-2 px-4 rounded-full cursor-pointer 
               text-sm font-bold text-white"
               >
@@ -128,7 +133,7 @@ export default function TopNav() {
           </div>
         )}
       </div>
-   
+
       <div className="flex gap-2">
         {!muted ? (
           <Button
@@ -136,6 +141,7 @@ export default function TopNav() {
             variant="ghost"
             size="icon"
             onClick={() => setMuted(true)}
+            id="mute"
           >
             <MdVolumeOff className="w-5 h-5" />
           </Button>
@@ -164,6 +170,7 @@ export default function TopNav() {
             className="w-8 h-8"
             variant="ghost"
             size="icon"
+            id="share"
           >
             <RiShareForward2Fill className="w-5 h-5" />
           </Button>
@@ -184,6 +191,7 @@ export default function TopNav() {
             variant="ghost"
             size="icon"
             onClick={handleClickFullscreen}
+            id="full"
           >
             <MdOutlineFullscreen className="w-5 h-5" />
           </Button>
@@ -224,14 +232,14 @@ export default function TopNav() {
                 className="cursor-pointer flex justify-center items-center gap-2"
               >
                 <MdFavoriteBorder />
-                My Favorite
+                Danh sách yêu thích
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={handleLogout}
                 className="cursor-pointer flex justify-center items-center gap-2"
               >
                 <BiLogOutCircle />
-                <p className="text-end">Log out</p>
+                <p className="text-end">Đăng xuất</p>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

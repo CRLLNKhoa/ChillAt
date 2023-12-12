@@ -65,8 +65,8 @@ export default function ExploreComponent() {
         <div className="absolute top-[40px] left-[70px] right-0
          bottom-0 border-r grid grid-cols-8 py-4">
             <div className="border-r p-4 pt-12 hidden lg:flex flex-col gap-2 text-[14px] justify-start items-start">
-              <h1 onClick={() => setTab(1)} className={cn("hover:text-sky-500 cursor-pointer duration-500",tab === 1 && "text-sky-500 font-semibold")}>🏞️ Spaces</h1>
-              <h1 onClick={() => setTab(2)} className={cn("hover:text-sky-500 cursor-pointer duration-500",tab === 2 && "text-sky-500 font-semibold")}>📑 Rankings</h1>
+              <h1 onClick={() => setTab(1)} className={cn("hover:text-sky-500 cursor-pointer duration-500",tab === 1 && "text-sky-500 font-semibold")}>🏞️ Không gian</h1>
+              <h1 onClick={() => setTab(2)} className={cn("hover:text-sky-500 cursor-pointer duration-500",tab === 2 && "text-sky-500 font-semibold")}>📑 Bảng xếp hạng</h1>
             </div>
             <div className="col-span-8 lg:col-span-7 p-4 overflow-y-auto">
               {tab === 1 && <SpaceExlore />}

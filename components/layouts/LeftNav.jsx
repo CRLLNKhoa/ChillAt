@@ -59,6 +59,7 @@ function LeftNav() {
         </div>
         {/* TODO ITEM */}
         <div
+        id="space"
           onClick={() => setSpace(!space)}
           className={cn(
             "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
@@ -70,6 +71,7 @@ function LeftNav() {
         </div>
         {/* TODO ITEM */}
         <div
+        id="timer"
           onClick={() => setShowTimer(!showTimer)}
           className={cn(
             "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
@@ -92,6 +94,7 @@ function LeftNav() {
         </div> */}
         {/* TODO ITEM */}
         <div
+        id="task"
           onClick={() => setShowTask(!showTask)}
           className={cn(
             "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
@@ -103,6 +106,7 @@ function LeftNav() {
         </div>
         {/* TODO ITEM */}
         <div
+        id="calendar"
           onClick={() => setShowCalendar(!showCalendar)}
           className={cn(
             "flex flex-col justify-center items-center w-[45px] cursor-pointer duration-500 h-[45px] p-2 hover:bg-slate-200 rounded-sm",
@@ -128,6 +132,7 @@ function LeftNav() {
       {/* NOTE EXPLORE */}
       <div className="flex flex-col items-center">
         <div onClick={() => setShowEx(true)}
+        id="explore"
           className=" flex flex-col items-center justify-center gap-2 
       font-semibold text-muted-foreground cursor-pointer w-[55px] hover:bg-slate-100 rounded-xl duration-300 py-4"
         >

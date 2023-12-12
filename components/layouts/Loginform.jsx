@@ -47,8 +47,9 @@ export default function Loginform() {
         <Button
           className="h-6 rounded-[2px] text-[12px]"
           variant="secondary"
+          id="loginbtn"
         >
-          🚪 Sign in
+          🚪 Đăng nhập
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">

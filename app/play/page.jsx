@@ -43,7 +43,7 @@ export default function Page() {
             src="/start.svg"
             alt="srta"
           />
-          <p className="font-mono">Nhấn để phát</p>
+          <p className="font-mono">Click to start</p>
         </span>
       )}
       <div className="space-view select-none">

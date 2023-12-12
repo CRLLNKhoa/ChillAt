@@ -12,12 +12,12 @@ export default function SpaceExlore() {
   return (
     <div className="flex flex-col">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Spaces</h1>
+        <h1 className="text-2xl font-bold">Không Gian</h1>
         <Button
           variant="outline"
           className="flex gap-2 text-foreground"
         >
-          <RiUploadCloud2Line className="w-5 h-5" /> Submit a space
+          <RiUploadCloud2Line className="w-5 h-5" /> Gửi yêu cầu
         </Button>
       </div>
       <Separator className="mt-4 mb-4" />

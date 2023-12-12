@@ -38,14 +38,14 @@ export default function RankingsComponent() {
     <div className="flex justify-center items-center flex-col gap-8">
       <div className="flex w-2/3 flex-col">
         <div className="flex justify-between items-center">
-          <h1 className="font-bold">Time Onlines</h1>
+          <h1 className="font-bold">Thời gian online</h1>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
                 <FaRegQuestionCircle />
               </TooltipTrigger>
               <TooltipContent>
-                <p>Music listening time</p>
+                <p>Thời gian làm việc với không gian ảo</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -59,7 +59,7 @@ export default function RankingsComponent() {
               className="w-8 h-8 mx-4 rounded-full"
             />
             <h1>Lương Khoa</h1>
-            <h1 className="ml-auto">12,050 minutes</h1>
+            <h1 className="ml-auto">12,050 Phút</h1>
             <img
               src="/cup.svg"
               alt="cup"
@@ -81,7 +81,7 @@ export default function RankingsComponent() {
                   className="w-8 h-8 mx-4 rounded-full"
                 />
                 <h1>{item.full_name}</h1>
-                <h1 className="ml-auto">{item.time_online} minutes</h1>
+                <h1 className="ml-auto">{item.time_online} Phút</h1>
                 <img
                   src="/star.svg"
                   alt="cup"
@@ -104,7 +104,7 @@ export default function RankingsComponent() {
                   className="w-8 h-8 mx-4 rounded-full"
                 />
                 <h1>{item.full_name}</h1>
-                <h1 className="ml-auto">{item.time_online} minutes</h1>
+                <h1 className="ml-auto">{item.time_online} Phút</h1>
                 <img
                   src="/star1.svg"
                   alt="cup"
@@ -116,14 +116,14 @@ export default function RankingsComponent() {
       </div>
       <div className="flex w-2/3 flex-col">
         <div className="flex justify-between items-center">
-          <h1 className="font-bold">Coins</h1>
+          <h1 className="font-bold">Thời gian hoàn thành Pomodoro</h1>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
                 <FaRegQuestionCircle />
               </TooltipTrigger>
               <TooltipContent>
-                <p>Use the timer feature to receive coins</p>
+                <p>Hoàn thành Pomodoro để nhận xu</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -137,7 +137,7 @@ export default function RankingsComponent() {
               className="w-8 h-8 mx-4 rounded-full"
             />
             <h1>Lương Khoa</h1>
-            <h1 className="ml-auto">12,050 Coins</h1>
+            <h1 className="ml-auto">12,050 Xu</h1>
             <img
               src="/cup.svg"
               alt="cup"
@@ -159,7 +159,7 @@ export default function RankingsComponent() {
                   className="w-8 h-8 mx-4 rounded-full"
                 />
                 <h1>{item.full_name}</h1>
-                <h1 className="ml-auto">{item.coin} Coins</h1>
+                <h1 className="ml-auto">{item.coin} Xu</h1>
                 <img
                   src="/star.svg"
                   alt="cup"
@@ -182,7 +182,7 @@ export default function RankingsComponent() {
                   className="w-8 h-8 mx-4 rounded-full"
                 />
                 <h1>{item.full_name}</h1>
-                <h1 className="ml-auto">{item.coin} Coins</h1>
+                <h1 className="ml-auto">{item.coin} Xu</h1>
                 <img
                   src="/star1.svg"
                   alt="cup"
